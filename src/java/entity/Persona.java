@@ -1,26 +1,22 @@
 /*
- Autor: Gamaliel Silva Lopez
- Fecha de creacion: 7 de marzo de 2022
- Fecha de modificacion: 8 de marzo de 2022
- Descripcion: Clase de get y set de persona
- */
+Autor: Gamaliel Silva Lopez 
+Fecha creación: 07/03/2022
+Fecha actualización: 07/03/2022
+Descripción: Clase abstracta de persona
+*/
+
 package entity;
 
-
-
-public class Persona {
-
-    private String nombre;
-    private String sexo;
+public abstract class Persona {
+    private String nombre, sexo;
     private int edad;
-
-    public Persona() {
-
+    
+    public Persona(){
+        
     }
-
-    public Persona(String nombre, String sexo, int edad) {
+    public Persona(String nombre, String Sexo, int edad){
         this.nombre = nombre;
-        this.sexo = sexo;
+        this.sexo = Sexo;
         this.edad = edad;
     }
 
@@ -47,5 +43,6 @@ public class Persona {
     public void setEdad(int edad) {
         this.edad = edad;
     }
-
+    
+    
 }

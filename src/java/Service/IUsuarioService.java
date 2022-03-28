@@ -1,20 +1,19 @@
 /*
- Autor: Gamaliel Silva Lopez
- Fecha de creacion: 11 de marzo de 2022
- Fecha de modificacion: 16 de marzo de 2022
- Descripcion: Se crea una clase de tipo interface donde podremos declarar 
-              nuestras diferentes metodos.
- */
+Autor: Gamaliel Silva Lopez 
+Fecha creación: 16/03/2022
+Fecha actualización: 16/03/2022
+Descripción: Interfaz de servicio para usuario
+*/
+
 package Service;
 
 import entity.Usuario;
 import java.util.List;
 
 public interface IUsuarioService {
-public void crearRegistro (Usuario usuario);
-    public void actualizarRegistro(Usuario usuario);
-    public void elminarRegistro(String idUsuario);
-    public List<Usuario> obtenerREgistros();
-    public Usuario obtenerRegistro(String codigo);
-    //public Usuario obtenerRegistro(int idUsuario);    
+ public void crearRegistro(Usuario usuario);
+ public void actualizarRegistro(Usuario usuario);
+ public void eliminarRegistro(int idUsuario);
+ public List<Usuario> obtenerRegistros();
+ public Usuario obtenerRegistro(int idUsuario);
 }

@@ -22,20 +22,20 @@ public class UsuarioModelImpl implements IUsuarioModel {
     public void crearRegistro(Usuario usuario) {
         try {
             conexion = new Conexion();
-            conexion.Conectar();
-            connection = conexion.getConexion();
-            String sql = "insert into usuario(codigo, nombreusuario, contraseña) values (?,?,?);";
-
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, usuario.getCodigo());
-                statement.setString(2, usuario.getNombreUsuario());
-                statement.setString(3, usuario.getContraseña());
-                statement.executeUpdate();
-                System.out.println("Datos insertados");
-            }
-            conexion.Desconectar();
-        } catch (Exception c) {
-            System.out.println("Error: " + c);
+            conexion.conecta();
+            connection = conexion.getConnection();
+            String sql = "Insert into usuarios (nombre_usuario, contraseña, nombre, sexo, edad) values(?, ?, ?, ?, ?);";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, usuario.getNombre_Usuario());
+            ps.setString(2, usuario.getContraseña());
+            ps.setString(3, usuario.getNombre());
+            ps.setString(4, usuario.getSexo());
+            ps.setInt(5, usuario.getEdad());
+            ps.executeUpdate();
+            System.out.println("Correcto");
+            conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -43,120 +43,103 @@ public class UsuarioModelImpl implements IUsuarioModel {
     public void actualizarRegistro(Usuario usuario) {
         try {
             conexion = new Conexion();
-            conexion.Conectar();
-            connection = conexion.getConexion();
-            String sql = "update usuario set codigo =?, nombreusuario=?, contraseña=? ";
-
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, usuario.getCodigo());
-                statement.setString(2, usuario.getNombreUsuario());
-                statement.setString(3, usuario.getContraseña());
-           
-                statement.executeUpdate();
-                System.out.println("Datos actualizados");
-            }
-            conexion.Desconectar();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
+            conexion.conecta();
+            connection = conexion.getConnection();
+            String sql = "Update usuarios set nombre_usuario=?, contraseña=?, nombre=?, sexo=?, edad=? where codigo=" + usuario.getCodigo() + ";";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, usuario.getNombre_Usuario());
+            ps.setString(2, usuario.getContraseña());
+            ps.setString(3, usuario.getNombre());
+            ps.setString(4, usuario.getSexo());
+            ps.setInt(5, usuario.getEdad());
+            ps.executeUpdate();
+            System.out.println("Correcto");
+            conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
     @Override
-    public void elminarRegistro(String idUsuario) {
+    public void eliminarRegistro(int idUsuario) {
         try {
             conexion = new Conexion();
-            conexion.Conectar();
-            connection = conexion.getConexion();
-            String sql = "delete from usuario where codigo= '"+idUsuario+"';";
+            conexion.conecta();
+            connection = conexion.getConnection();
+            String sql = "delete from usuarios where codigo=" + idUsuario + ";";
             Statement s = connection.createStatement();
             int rs = s.executeUpdate(sql);
-            System.out.println("Datos elimanados");
-            conexion.Desconectar();
-        } catch (Exception c) {
-            System.out.println("Error: " + c);
+            System.out.println("Correcto");
+            conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
+
     }
 
     @Override
-    public List<Usuario> obtenerREgistros() {
-        List<Usuario> listausuario = null;
+    public List<Usuario> obtenerRegistros() {
+        Usuario u;
+        List<Usuario> lista = new ArrayList<Usuario>();
         try {
-            ResultSet resulSet;
-            listausuario = new ArrayList<>();
             conexion = new Conexion();
-            conexion.Conectar();
-            connection = conexion.getConexion();
-            String sql = "select * from usuario";
+            conexion.conecta();
+            connection = conexion.getConnection();
+            Statement s = connection.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM usuarios;");
 
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                resulSet = statement.executeQuery();
-
-                while (resulSet.next()) {
-                    Usuario usuario = new Usuario();
-                    usuario.setCodigo(resulSet.getString(1));
-                    usuario.setNombreUsuario(resulSet.getString(2));
-                    usuario.setContraseña(resulSet.getString(3));
-                    listausuario.add(usuario);
-                }
+            while (rs.next()) {
+                u = new Usuario();
+                u.setCodigo(rs.getString("codigo"));
+                u.setNombre_Usuario(rs.getString("nombre_usuario"));
+                u.setContraseña(rs.getString("contraseña"));
+                u.setNombre(rs.getString("nombre"));
+                u.setSexo(rs.getString("sexo"));
+                u.setEdad(rs.getInt("edad"));
+                lista.add(u);
             }
-            conexion.Desconectar();
-        } catch (Exception c) {
-            System.out.println("Error: " + c);
+            conexion.desconectar();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        return listausuario;
+        return lista;
     }
 
     @Override
-    public Usuario obtenerRegistro(String  codigo) {
-        Usuario usuario = null;
+    public Usuario obtenerRegistro(int idUsuario) {
+        Usuario u = new Usuario();
         try {
-            ResultSet resulSet;
-            usuario = new Usuario();
             conexion = new Conexion();
-            conexion.Conectar();
-            connection = conexion.getConexion();
-            String sql = "select * from usuario where codigo=?";
-
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                 statement.setString(1, codigo);
-                resulSet = statement.executeQuery();
-
-                while (resulSet.next()) {
-
-                    usuario.setCodigo(resulSet.getString(1));
-                    usuario.setNombreUsuario(resulSet.getString(2));
-                    usuario.setContraseña(resulSet.getString(3));
-
-                }
+            conexion.conecta();
+            connection = conexion.getConnection();
+            Statement s = connection.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM usuarios where codigo=" + idUsuario + ";");
+            while (rs.next()) {
+                u.setCodigo(rs.getString("codigo"));
+                u.setNombre_Usuario(rs.getString("nombre_usuario"));
+                u.setContraseña(rs.getString("contraseña"));
+                u.setNombre(rs.getString("nombre"));
+                u.setSexo(rs.getString("sexo"));
+                u.setEdad(rs.getInt("edad"));
             }
-            conexion.Desconectar();
-        } catch (Exception c) {
-            System.out.println("Error: " + c);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        return usuario;
-
+        return u;
     }
 
     public static void main(String[] args) {
-        Usuario u1 = new Usuario();
-        u1.setCodigo("02");
-        u1.setNombreUsuario("GAMAS");
-        u1.setContraseña("123");
-        UsuarioModelImpl p1 = new UsuarioModelImpl();
-        p1.crearRegistro(u1);
-      // p1.actualizarRegistro(u1);
-       // p1.elminarRegistro("02");
-       List<Usuario> listausuario=p1.obtenerREgistros();
-        for (Usuario usr:listausuario) {
-            System.out.println(usr.getCodigo());
-            System.out.println(usr.getNombreUsuario());
-            System.out.println(usr.getContraseña());
-        }
-        
-       // u1=p1.obtenerRegistro("02");
-       // System.out.println(u1.getNombreUsuario());
-       
-        
+        Usuario u = new Usuario();
+        u.setCodigo("2");
+        u.setContraseña("87691520");
+        u.setEdad(20);
+        u.setNombre("Ivan");
+        u.setNombre_Usuario("wos");
+        u.setSexo("Masculino");
+        UsuarioModelImpl m = new UsuarioModelImpl();
+        m.crearRegistro(u);
+        u = m.obtenerRegistro(1);
+        System.out.println(u.getCodigo());
 
     }
 }

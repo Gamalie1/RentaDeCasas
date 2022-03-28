@@ -12,12 +12,11 @@ import java.sql.SQLException;
 
 
 public interface IUsuarioModel {
-    public void crearRegistro (Usuario usuario);
-    public void actualizarRegistro(Usuario usuario);
-    public void elminarRegistro(String idUsuario);
-    public List<Usuario> obtenerREgistros();
-    public Usuario obtenerRegistro(String codigo);
-    //public Usuario obtenerRegistro(int idUsuario);
+    public void crearRegistro(Usuario usuario);
+ public void actualizarRegistro(Usuario usuario);
+ public void eliminarRegistro(int idUsuario);
+ public List<Usuario> obtenerRegistros();
+ public Usuario obtenerRegistro(int idUsuario);
     
    
     

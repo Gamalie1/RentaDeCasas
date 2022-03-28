@@ -1,10 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Autor: Gamaliel Silva Lopez 
+Fecha creación: 17/03/2022
+Fecha actualización: 17/03/2022
+Descripción: Servlet para guardar edicion
  */
+
 package Controller;
 
+
+import Service.IUsuarioService;
+import Service.UsuarioServiceImpl;
+import entity.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,37 +18,23 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
-/**
- *
- * @author labso08
- */
 public class GuardarEditarUsuarioServlet extends HttpServlet {
 
-  
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet GuardarEditarUsuarioServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet GuardarEditarUsuarioServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        IUsuarioService service = new UsuarioServiceImpl();
+        Usuario u = new Usuario();
+        u.setCodigo(request.getParameter("idUsuario"));
+        int edad=Integer.parseInt(request.getParameter("edad"));
+        u.setContraseña(request.getParameter("contraseña"));
+        
+        u.setEdad(edad);
+        u.setNombre(request.getParameter("nombre"));
+         u.setNombre_Usuario("usuario");     
+         u.setSexo(request.getParameter("sexo"));
+         service.actualizarRegistro(u);
+         response.sendRedirect("ListarUsuarioServlet");
+        
     }
-
-  
 }
