@@ -1,5 +1,5 @@
 /*
-Autor: Gamaliel Silva Lopez 
+Autor: Jesús Fernando Hernández Vite 
 Fecha creación: 16/03/2022
 Fecha actualización: 16/03/2022
 Descripción: Interfaz de servicio para usuario

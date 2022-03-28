@@ -1,5 +1,5 @@
 /*
-Autor: Gamaliel Silva López
+Autor: Jesús Fernando Hernández Vite
 Fecha creación: 16/03/2022
 Fecha actualización: 16/03/2022
 Descripción: Clase de servicio para usuario en donde se implementan los metodos de IUsuarioService
