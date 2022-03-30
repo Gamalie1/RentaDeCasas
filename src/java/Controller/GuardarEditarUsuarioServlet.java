@@ -1,5 +1,5 @@
 /*
-Autor: Jesús Fernando Hernández Vite
+Autor: Gamaliel Silva Lopez 
 Fecha creación: 17/03/2022
 Fecha actualización: 17/03/2022
 Descripción: Servlet para guardar edicion

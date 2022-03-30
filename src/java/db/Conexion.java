@@ -1,5 +1,5 @@
 /*
- Autor: Jesús Fernando Hernández Vite
+ Autor: Gamaliel Silva Lopez
  Fecha de creacion: 7 de marzo de 2022
  Fecha de modificacion: 10 de marzo de 2022
  Descripcion: Clase conexion 

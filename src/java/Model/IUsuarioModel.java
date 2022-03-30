@@ -1,5 +1,5 @@
 /*
- Autor: Jesús Fernando Hernández Vite
+ Autor: Gamaliel Silva Lopez
  Fecha de creacion: 11 de marzo de 2022
  Fecha de modificacion: 11 de marzo de 2022
  Descripcion: Se crea una clase de tipo interface donde podremos declarar 

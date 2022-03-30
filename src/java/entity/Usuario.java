@@ -1,5 +1,5 @@
 /*
-Autor: Jesús Fernando Hernández Vite 
+Autor: Gamaliel Silva Lopez 
 Fecha creación: 07/03/2022
 Fecha actualización: 07/03/2022
 Descripción: Clase que hereda de persona
