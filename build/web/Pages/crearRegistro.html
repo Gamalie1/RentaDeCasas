@@ -1,0 +1,140 @@
+
+<!--
+ Autor: Gamaliel Silva Lopez
+ Fecha de creacion: 17 de marzo de 2022
+ Fecha de modificacion: 17 de marzo de 2022
+ Descripcion: Se crea una pagina web donde se crea una pagina con un formulario.
+-->
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario de Contacto</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../Resources/CSS/EstiloRegistrar.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<LINK REL=StyleSheet HREF="estilos.css" TYPE="text/css" MEDIA=screen>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+           <link rel="stylesheet" type="text/css" href="estilohome.css">
+        <title>RentaCasas</title>
+
+  </head>
+  <body>
+    <header class="header">
+      <div class="bg-dark">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">RentaCasas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav w-100 justify-content-center ">
+                <a class="nav-item nav-link active" href="/CAsas/Pages/index.html">Inicio <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/CAsas/Pages/crearRegistro.html">Crear</a>
+                <a class="nav-item nav-link" href="../ListarUsuarioServlet">Listar</a>
+                <a class="nav-item nav-link" href="/CAsas/Pages/SobreNosotros.html">Acerca de...</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+        <div class="form">
+            <section class="container">
+                <div class="row">
+                    <h3 class="center-align">Registro</h3>
+                    <article class="col s6 offset-s3">
+
+
+                        <form action='../GuardarCrearUsuarioServlet' method='POST'>
+                            <div class="input-field">
+                                <i class="material-icons prefix">perm_identity</i>
+                                <label for="nombre">Nombre</label>
+                                 <input type='text' name='nombre' value=''required pattern="[A-Za-z]{1,}" title="Porfavor escribir solo letras">
+                            </div>
+                            
+                             <div class="input-field">
+                                <i class="material-icons prefix">perm_identity</i>
+                                <label for="nombre">Nombre usuarios</label>
+                                 <input type='text' name='usuario' value=''required pattern="[A-Za-z]{1,}" title="Porfavor escribir solo letras">
+                            </div>
+
+                            <div class="input-field">
+                                <i class="material-icons prefix">person_pin</i>
+                                <label for="Contraseña">Contraseña</label>
+                                <input type='password' name='contraseña' value=''required>
+                            </div>
+
+
+                            <div class="radio">
+                                <h4>Sexo</h4>
+                                <input type="radio" id="hombre" name="sexo" value="Hombre" required>
+                                <label for="hombre">Hombre</label>
+
+                                <input type="radio" id="mujer" name="sexo" value="Mujer" required>
+                                <label for="mujer">Mujer</label>
+
+                                
+                            </div>
+
+
+                            Selecciona tu edad: <input type="number" name="edad" min="1" max="100" />
+
+                            <p class="center-align">
+                                <button class="waves-effect waves-light btn" type="submit" value='Guardar'><i class="material-icons right">send</i>enviar</button>
+                            </p>
+
+                        </form> 
+
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script> 
+    </body>
+    <footer>
+   <div class="Textfooter">
+     <div class="container">
+      <div class="row">  
+  <div class="col-sm-12 col-md-6 col-xl-4">
+  <h4>Colaboradores:</h4>
+  <p class="TextP">Gamaliel</p>
+   <p class="TextP">Fernando Vite</p>
+    <p class="TextP">Luis Lennin</p>
+        </div>
+     <div class="col-sm-12 col-md-6 col-xl-4">
+<h4>Contactos:</h4>
+  <p class="TextP">Gamaliel:+52 9512323378</p>
+   <p class="TextP">Fernando Vite:+52 9511602753</p>
+    <p class="TextP">Lennin:+52 9531332959</p>
+        </div>
+    <div class="col-sm-12 col-md-6 col-xl-4">
+<h4>Redes Sociales</h4>
+   <p class="TextP">Facebook:Renta de casas</p>
+    <p class="TextP">Instagram:Renta_Casas</p>
+    <p class="TextP">Twitter:@RentadeCasas</p>
+        </div> </div></div>
+
+         <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</footer>
+</html>
