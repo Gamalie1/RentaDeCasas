@@ -1,5 +1,5 @@
 /*
- Autor: Gamaliel Silva Lopez
+ Autor: Jesús Fernando Hernández Vite
  Fecha de creacion: 11 de marzo de 2022
  Fecha de modificacion: 15 de marzo de 2022
  Descripcion: Se crea una clase donde se implementan todos los metoso de IUsuarioModel

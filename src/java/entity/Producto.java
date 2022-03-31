@@ -1,5 +1,5 @@
 /*
-Autor: Gamaliel Silva Lopez 
+Autor: Jesús Fernando Hernández Vite
 Fecha creación: 07/03/2022
 Fecha actualización: 07/03/2022
 Descripción: Clase producto, se declara el get y el set 
